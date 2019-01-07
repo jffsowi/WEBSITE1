@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>Urban view</title>
+  <meta charset="utf-8"><!--
+    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <!-- seo woorden -->
+<meta name="keywords" content="Mekongdelta, Mekong, Venetian lagoon, lagune van Venetië, Lagune, Venetië, Watermanagement, OVerstromingen, delta's, delta, urban delta, floodings, flood, delta maps, delta kaarten, rivieren, watermanagement mappen, urbaan, verstedelijking">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="styletest.css"/>
+ <link href="https://fonts.googleapis.com/css?family=Quicksand|Raleway" rel="stylesheet"> 
+</head>
+<style>
+body {
+      font: 400 15px/1.8 Lato, sans-serif;
+      color: #777;
+  }
+  h3, h4 {
+      margin: 10px 0 30px 0;
+      letter-spacing: 10px;      
+      font-size: 20px;
+      color: #111;
+  }
+  .container {
+      padding: 80px 120px;
+  }
+  .person {
+      border: 10px solid transparent;
+      margin-bottom: 25px;
+      width: 80%;
+      height: 80%;
+      opacity: 0.7;
+  }
+  .person:hover {
+      border-color: #f1f1f1;
+  }
+  .carousel-inner img {
+    /*  -webkit-filter: grayscale(90%);
+      /* filter: grayscale(90%); /* make all photos black and white */ 
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+    }
+    
+  .carousel-caption h3 {
+      color: #fff !important;
+  }
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+  }
+  .bg-1 {
+      background: #2d2d30;
+      color: #bdbdbd;
+  }
+  .bg-1 h3 {color: #fff;}
+  .bg-1 p {font-style: italic;}
+  .list-group-item:first-child {
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+  }
+  .list-group-item:last-child {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+  }
+  .thumbnail {
+      padding: 0 0 15px 0;
+      border: none;
+      border-radius: 0;
+  }
+  .thumbnail p {
+      margin-top: 15px;
+      color: #555;
+  }
+  .btn {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #f1f1f1;
+      border-radius: 0;
+      transition: .2s;
+  }
+  .btn:hover, .btn:focus {
+      border: 1px solid #333;
+      background-color: #fff;
+      color: #000;
+  }
+  .modal-header, h4, .close {
+      background-color: #333;
+      color: #fff !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  .modal-header, .modal-body {
+      padding: 40px 50px;
+  }
+  .nav-tabs li a {
+      color: #777;
+  }
+ 
+  .navbar {
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 0;
+      background-color: #2d2d30;
+      border: 0;
+      font-size: 11px !important;
+      letter-spacing: 4px;
+      opacity: 0.9;
+      height: 70px;
+  }
+  .navbar li a, .navbar .navbar-brand { 
+      color: #d5d5d5 !important;
+  }
+  .navbar-nav li a:hover {
+      color: #fff !important;
+  }
+  .navbar-nav li.active a {
+      color: #fff !important;
+      background-color: #71bb7e !important;
+      height: 70px;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+  }
+  .open .dropdown-toggle {
+      color: #fff;
+      background-color: #555 !important;
+  }
+  .dropdown-menu li a {
+      color: #000 !important;
+  }
+  .dropdown-menu li a:hover {
+      background-color: red !important;
+  }
+  footer {
+      background-color: #2d2d30;
+      color: #f5f5f5;
+      padding: 32px;
+  }
+  footer a {
+      color: #f5f5f5;
+  }
+  footer a:hover {
+      color: #777;
+      text-decoration: none;
+  }  
+  .form-control {
+      border-radius: 0;
+  }
+  textarea {
+      resize: none;
+  }
+      .container .contact-form {
+  width: 53%;
+  margin-left: 2%;
+  float: left;
+}
+.container .contact-form .title {
+  font-size: 2.5em;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #242424;
+  margin: 5% 8%;
+}
+.container .contact-form .subtitle {
+  font-size: 1.2em;
+  font-weight: 400;
+  margin: 0 4% 5% 8%;
+}
+.container .contact-form input,
+.container .contact-form textarea {
+  width: 400px;
+    height: 50px;
+  padding: 3%;
+  margin: 2% 8%;
+  color: #242424;
+  border: 1px solid #B7B7B7;
+}
+.container .contact-form input::placeholder,
+.container .contact-form textarea::placeholder {
+  color: #242424;
+}
+.container .contact-form .btn-send {
+  background: lightblue;
+  width: 180px;
+  height: 30px;
+  color: #FFFFFF;
+  font-weight: 700;
+  margin: 2% 8%;
+  border: none;
+    }
+    
+#map, #map2 { 
+    height: 400px; 
+    width: 450px;
+}  
+    
+    .jumbotron{
+    position: static;
+    }
+    #myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  background-color: #fbd415;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #554;
+}
+    
+    @font-face{
+font-family: 'Raleway', sans-serif;
+font-family: 'Quicksand', sans-serif;
+    }
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 80%;
+}
+    .ImageWrapper iframe {
+	position:static;
+	top: 0;
+	left: 0;
+	width: 80%;
+	height: 80%;
+}
+    </style>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="70">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+        <span class="icon-bar"></span>                         
+      </button>
+      <a class="navbar-brand" href="#myPage"><img src="img/logo.png" height="45px" width="45px" /></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="#myPage"><font face="quicksand">HOME</font></a></li>
+          <li><a href="#urbandelta"><font face="quicksand">URBAN DELTAS</font></a></li>
+          <li><a href="#map"><font face="quicksand">MAP</font></a></li>
+          <li><a href="#contact"><font face="quicksand">CONTACT</font></a></li>
+          <li><a href="#blog"><font face="raleway">BLOG</font></a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+        
+      </ul>
+      <div id="google_translate_element"></div> 
+  
+<script type="text/javascript"> 
+function googleTranslateElementInit() { 
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element'); 
+} 
+</script> 
+  
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
+    </div>
+  </div>
+</nav>
+
+</div>
+
+
+<!--sticky scroll-->
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script>
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("myBtn").style.display = "block";
+  } else {
+    document.getElementById("myBtn").style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+  
+<!--carousel-->
+<div class="container-fluid">
+<div id="myCarousel" class="carousel slide; container-fluid;" data-ride="carousel";  margin: "0 auto"; >
+    <!-- Indicators 
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="img/mekongliving.jpg" alt="New York" style="width:100%;">
+        <div class="carousel-caption">
+            <h3><font face="quicksand">Mekong</font></h3>
+        </div>      
+      </div>
+
+      <div class="item">
+        <img src=img/venice_0.jpg alt="Chicago" style="width:100%;">
+        <div class="carousel-caption">
+            <h3><font face="quicksand">Venetië</font></h3>
+        </div>      
+      </div>
+    
+     
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    </div></div>
+
+
+<!-- Container (The intro Section) -->
+
+    <br><br><h3 style="text-align: center"><font face="quicksand">URBAN VIEW</font><img src="img/logo.png" height="70px" width="70px" /></h3>
+        <em><p style="text-align: center" ><font face="raleway">Onderzoek naar de vergelijking tussen de Mekong delta en Lagune van Venetië.</font></p></em><font face="raleway">
+Door de snelle veranderingen en innovatie
+wonen steeds meer mensen in steden dan
+op het platteland. Meer dan de helft van
+de wereldbevolking woont in steden en de
+verwachting is dat dit nog verder toeneemt
+tot wel 70% in 2050. Veel van deze mensen
+    wonen in stedelijke delta’s.
+           
+Stedelijke delta’s kampen tegenwoordig echter met gelijksoortige uitdagingen. Zeker in de tijd
+van dreigende overstromingen en te dicht bevolkte gebieden. Dit is allemaal de
+oorzaak van de klimaatverandering die steeds vaker en sneller dichter bij komt, wat
+gevolgen heeft op de delta’s. Binnen het project wordt er een website opgebouwd
+        die informatie biedt over Urban Delta’s met een onderlinge vergelijking van de delta’s op één of meerdere thema’s</font></p>
+    <br></div>
+  
+   
+   
+      <div id="demo3" class="collapse">
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Container (Urban delta Section) -->
+<div id="urbandelta" class="bg-1"style="position:relative">
+  <div class="container" style="position:relative">
+   <h2 class="text-center"><font face="quicksand">URBAN DELTA'S</font></h2>
+      <p class="text-center"><font face="raleway">Mekongdelta v.s Lagune van Venetië</font></p>  
+    
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home"><font face="quicksand">Introductie</font></a></li>
+    <li><a data-toggle="tab" href="#menu">Geografie</a></li>
+    <li><a data-toggle="tab" href="#menu2">Menselijke ingreep en gebruik</a></li>
+    <li><a data-toggle="tab" href="#menu1">Klimaat</a></li>
+    <li><a data-toggle="tab" href="#menu4">Overstromingen</a></li>
+    <li><a data-toggle="tab" href="#menu5">Waterveiligheid</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+        <h2 class="text-center"><font face="quicksand">Introductie</font></h2>
+        <font-size="6" class="text-center"><font face="raleway">Urban View heeft in 2018 onderzoek verricht betreft de twee delta's: de Mekong delta en de lagune van Venetië. Het onderzoek is gefocust op het thema van overstromingen. De twee gebieden zijn onderzocht op de zes bovenstaande onderwerpen. Per onderdeel worden de kenmerken van de Mekong delta en Lagune van Venetië naast elkaar geplaatst zodat de verschillen op deze manier inzichtelijker zijn. De bedoeling van dit onderzoek is dat de twee gebieden van elkaars verschillen leren en de actuele situatie van de gebieden onder het oog wordt gebracht. <br><br><em>Laat gerust een comment achter over jouw mening/ideeën/reacties en overige in de blog, onderaan de pagina!</em></font><br><br> <div style="text-align: center"><script id="infogram_0_e9ad4473-6c7c-4da5-9009-56dbf5029648" title="mekong" src="https://e.infogram.com/js/dist/embed.js?uF5" type="text/javascript"></script><div style="text-align: center; padding:8px 0;font-family:Arial!important;font-size:13px!important;line-height:15px!important;text-align:center;border-top:1px solid #dadada;margin:0 30px"><a href="https://infogram.com/e9ad4473-6c7c-4da5-9009-56dbf5029648" style="color:#989898!important;text-decoration:none!important;" target="_blank"></a><br><a href="https://infogram.com" style="color:#989898!important;text-decoration:none!important;" target="_blank" rel="nofollow">scroll met je muis over de diagrammen om de informatie te bekijken.</a></div>
+       <!-- vergelijking tekst-->     
+  <div class="row">
+    <div class="col-sm-6" style="text-decoration-color: aliceblue; text-align: left">
+    <font face="raleway"> <h2>Mekong Delta</h2>
+     <font size="3"> De Mekongdelta in Vietnam, de derde grootste delta van de wereld, is aan het verdrinken. Dit komt niet alleen door de zeespiegelstijging, maar vooral ook door de bodemdaling in het gebied. 
+         <br><br>De delta is het domein van rijstboeren, vissers én veel industrie. Deze moeten allemaal boven water blijven. Varen over de kreken en kanalen, langs de rijstplantages, visserijen en drijvende groentemarkten. Huisjes op de dijk, paalwoningen en drijvende huizen met daaronder kooien waarin vis wordt gekweekt. </font></font>
+    </div>
+    <div class="col-sm-6" style="text-decoration-color: aliceblue; text-align:right">
+   <font face="raleway">  <h2>Lagune van Venetië</h2>
+       <font size="3">   Venetië en water, het is een verhaal van liefde en haat. De kanalen en de lagune zijn het belangrijkste kenmerk van Venetië en geven de stad zijn ontspannen sfeer. Roeien en regatas maken deel uit van het dagelijkse leven van elke Venetiaan.<br><br>Aan de andere kant is de destructieve kracht van het water ook de grootste vijand van de infrastructuur van de stad.</font></font>
+
+      </div></div>
+     </a></div>
+    </div>
+    <div id="menu" class="tab-pane fade">
+     <div class="row">
+    <div class="col-sm-6" style="text-decoration-color: aliceblue;">
+    <font face="raleway"> <h2>Mekong Delta</h2>
+     De Mekong delta is een gebied in het zuidwesten van Vietnam waar de rivier Mekong met een net van zijtakken in het Zuid-Chinese Zee uitmondt. De delta is door sedimentatie ontstaan en breidt zich jaarlijks uit met ongeveer 80 meter. De delta omvat een oppervlakte van 39.000 km². De grootte van het gebied dat bedekt is met water verschild per seizoen. Meer stroomopwaarts strekt de delta zich uit tot aan de splitsing in de twee takken Bassac en Mekong. <br><br>
+     <img src=img/geomek.png  width="400px" /><br><br>
+        De Mekong-delta heeft zich snel ontwikkeld van een estuarium tot een delta in een relatief rustige bocht in de Zuid-Chinese Zee onder invloed van de hoge fluviale sedimenttoevoer 5300 tot 3500 jaar geleden, van een estuarium tot een delta. Deze >200 km zeewaarts groei resulteerde in een toenemende blootstelling van de delta aan oceaangolven die leidde tot een meer door de golven beïnvloede manier van ontstaan, dit is te zien aan het ontstaan van de oeverwallen en strandruggen. De hoger gelegen gebieden worden voornamelijk bewoond door de inwoners.</font>
+    </div>
+    <div class="col-sm-6" style="text-decoration-color: aliceblue; text-align:right">
+    <font face="raleway"> <h2>Lagune van Venetië</h2>
+      De stad Venetië, Italië, is gebouwd op barrière-eilanden en een kustlagune van de Adriatische Zee. De Lagune van Venetië is het grootste wetland van de Middellandse Zee. Het bestaat voornamelijk uit zoutwatermoerassen en slikken. Twee grote rivieren (de Sile en de Brenta) monden uit in de lagune. De dunne barrière-eilanden hebben drie smalle openingen naar de Adriatische Zee.<br><br>
+        <img src=img/geoven.png  width="400px" /><br><br>Venetië is echter een van de grootste steden in Italië sinds de opkomst van het oude Rome. Al meer dan 500 jaar baggeren ingenieurs en stadsbestuurders de lagune om een reeks eilanden en kanalen te creëren. Wetlandgebieden zijn ook drooggelegd om land te creëren voor woningbouw en industrie. Door de groei van Venetië is ook de watervoerende laag onder de lagune en de omliggende kust drooggelegd. Door de inkrimping van de watervoerende laag is het land erboven gezakt en is Venetië gezakt. Door de lagere ligging van Venetië werd het steeds kwetsbaarder voor de sterke getijden van de Adriatische Zee. </font>
+   
+      </div></div>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+       <div class="row">
+    <div class="col-sm-6" style="text-decoration-color: aliceblue;">
+    <font face="raleway"> <h2>Mekong Delta</h2>
+     De Mekong Delta wordt op veel verschillende manieren gebruikt. De grond in en rond de delta is enorm vruchtbaar door de overstromingen. Hierdoor is de grond erg geschikt voor rijstbouw; de grootste bron van inkomsten in de delta. 
+        Er worden ook veel vissen gekweekt in de Mekong Delta, maar die verschijnen vaak giftig op de markten. Omdat er veel mensen werken, wonen er ook veel mensen in de delta: de meeste mensen in Can Tho, de belangrijkste en grootste stad waar ook veel toeristen komen. Maar de delta kampt met overstromingen en tijdelijke droogte. Om de problemen op te lossen is er een plan ontwikkeld door de Nederlandse overheid waarin beschreven staat hoe en wat de delta moet veranderen.</font><br><br><img src="img/mekong2.gif" height="300px"/> <br><br>
+    </div>
+    <div class="col-sm-6" style="text-decoration-color: aliceblue; text-align:right">
+    <font face="raleway"> <h2>Lagune van Venetië</h2>
+      de stad Venetië zoals we die nu kennen is geen natuurlijk eiland (of groep van 118 eilanden), maar een kunstmatige stad gebouwd op het water. In de 8e en 9e eeuw was Venetië slechts een archipel van kleine eilanden, gescheiden door één grote en vele smalle kanalen. Deze eilanden werden vanaf de 9e eeuw bewoond.<br><br>
+ Toen de bevolking groeide en de huizen steeds groter werden, schoren ze de grond en creëerden ze extra land. 
+
+        Venetië is mede een heel bijzondere stad omdat je er geen enkele auto zult tegen komen. In Venetië. In plaats van gewone bussen, neem je boten en in plaats van wegen, zijn er kanaaltjes.</font><br><br><img src="img/venetie2.gif" height="300px"/><br><br>
+    </div>
+  </div>
+      </div>
+      <div id="menu1" class="tab-pane fade">
+     <div class="row">
+    <div class="col-sm-6" style="text-decoration-color: aliceblue;">
+    <font face="raleway"> <h2>Mekong Delta</h2>
+     Door de langgerekte vorm van de Mekong zijn er grote klimaatverschillen. Het zuiden van de Mekong delta is tropisch met gemiddelde temperaturen die vrij constant rond de 30°C liggen. <br> <img class="img-fluid text-right" src=img/tempmek.png height="300px" width="400px" /><br> <br><br>is de luchtvochtigheid in april en mei zeer hoog, die dan oploop tot boven de 90%. Dit wordt gekenmerkt door felle korte buiten. Juli tot septemer is de periode waarin de meeste regen valt. De Mekong delta krijgt ’s zomers regelmatig te maken met overstromingen na hevige regenvallen in Laos en Cambodja. <br><br>
+In de noordelijke kustregio van Midden-Vietnam is het weer over het algemeen slecht. Hier valt in de maanden augustus tot januari de meeste regen. Dit gedeelte van het kustgebied heeft dan ook veel te lijden van verwoestende wervelstormen of taifoens. 
+        <br><br>De verschillen per regio zijn groot; als in de bergen de regentijd is aangebroken, is het aan de kust zonnig en droog. En als het in de winter in het noordelijke berggebied vrij koud is, is het in het zuiden lekker warm. </font>
+    </div>
+    <div class="col-sm-6" style="text-decoration-color: aliceblue; text-align:right">
+    <font face="raleway"> <h2>Lagune van Venetië</h2>
+     
+Venetië heeft een mediterraan klimaat met warme zomers en vrij zachte winters. De zomers zijn warm en droog en de winters, waarin de meeste regenval plaatsvindt, zijn mild en nat. <br> <img class="img-fluid text-left" src=img/tempven.png height="300px" width="400px" /><br><br><br>Het klimaat in Venetië is constant, maar het kan ook van dag tot dag variëren. In januari kan een dag koud en winderig zijn, maar het kan ook zonnig zijn. In het hartje van de zomer kan het ongelooflijk warm zijn en een temperatuur bereiken van ongeveer 31°C. <br>De gemiddelde maandelijkse temperatuur stijgt vanaf juni boven de 25°C. Omdat Venetië in een lagune ligt, is de luchtvochtigheid hoog. Van oktober tot februari is deze het hoogst. 
+        <br><br>Het klimaat in Venetië kent andere bekende fenomenen die bekend staan als Acqua alta (hoogwater) en Acqua bassa (laagwater) waar meer over wordt verteld onder het onderwerp overstromingen.</font> 
+      </div></div>
+      <div style="text-align: center" > 
+      <img style="width: 50%" src=img/vergelijking%20regen.PNG /></div>
+    </div>
+     <div id="menu4" class="tab-pane fade">
+     
+         <br><br><div style="text-align: center"><div class="videoWrapper"><iframe width="700" height="315" align="center" display="block" src="https://www.youtube.com/embed/cn7nEBKGQd4?start=2" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+     <div class="row">
+    <div class="col-sm-6" style="text-decoration-color: aliceblue;">
+   <font face="raleway">  <h2>Mekong Delta</h2>
+     De Mekong delta is aan het verdrinken. Dit komt niet alleen door de zeespiegelstijging, mar vooral ook door de bodemdaling in het gebied.<br><br> 
+Per jaar daalt de bodem van de Mekong delta met 1 – 4,7 centimeter. De delta ligt slechts één tot twee meter boven zeeniveau, waardoor maatregelen snel genomen moeten worden. De bodemdaling vergroot namelijk de kans tot overstromingen. <br><br> 
+De delta verzakt door het toedoen van de mens waaronder het oppompen van grondwater de belangrijkste oorzaak blijkt. Het grondwater wordt vervolgens gebruikt als drinkwater of voor landbouw en industrie. <br><br> <img src=img/mekflood.png height="300px" width="300px" /><br><br>
+Naast de bodemdaling heeft de delta nog meer te verduren. Zo stijgt de zeespiegel in de Mekong delta 4 millimeter per jaar. Zo zijn overstromingen een jaarlijks terugkerend verschijnsel geworden, waarbij de sedimentatie goed is voor de rijstproductie in de delta. Echter, doordat de rivier wordt afgedamd, wordt het sediment in de bovenstroom tegen gehouden, waardoor dus ook ophoging van de delta wordt tegen gehouden. Ook door de bedijking langs riviertakken kan het sediment niet meer op een natuurlijke wijze achter de dijken terecht komen. Het stroomt direct door naar zee. Dit terwijl dat sediment juist de bodemdaling kan compenseren. De dammen en dijken versterken juist het effect van bodemdaling. 
+        </font>
+    </div>
+    <div class="col-sm-6" style="text-decoration-color: aliceblue; text-align:right">
+  <font face="raleway">   <h2>Lagune van Venetië</h2>
+ Venetië wordt vaak de zinkende stad genoemd. De stad is nu 25 cm lager dan aan het begin van de 20e eeuw. De stad verzakt door een combinatie van menselijk handelen en natuurlijke oorzaken. De biologische balans tussen afzetting en erosie in de lagune is verstoord door het oppompen van grondwater, grootschalige vuilstort en de aanleg van het industriegebied van Marghera en tot 18 meter diepe vaargeulen voor grote olietankers en cruiseschepen. <br><br>
+Het klimaat in Venetië kent namelijk andere bekende fenomenen die bekend staan als Acqua alta (hoogwater) en Acqua bassa (laagwater) alta’. Het acqua alta (hoog water) kan omschreven worden als hoog water of een plotselinge opkomende vloed. <br><br><img src=img/venflood.png height="300px" width="320px" /><br><br>Acqua alta vind over het algemeen plaats inde winter door de combinatie van sterke getijden, sterke zuidenwind en zeegolven die grote instroom van water in de lagune veroorzaken.  Hoge getijden (140 cm boven de zeespiegel) overstromen ongeveer 50% van de stad. <br> 
+      Het tegenovergestelde fenomeen is de acqua bassa. Wanneer dit gebeurt, is het water in sommige kanalen zo laag (van -50 cm, zelfs tot -70 cm) dat boten vast komen te zitten en de waterwegen niet gebruikt kunnen worden. Acqua bassa komt minder vaak voor dan acqua alta, maar komt de laatste jaren vaker voor doordat veel kanalen al lang niet meer gebaggerd en schoongemaakt zijn. Door wijzigingen in de wet is alle financiering voornamelijk naar het Mose-project gegaan. Net als bij acqua alta is het een kwestie van geduld (van een paar uur) totdat het water weer normaal stroomt.</font>
+         </div></div>
+         
+         </div>
+         <div id="menu1" class="tab-pane fade">
+     <div class="row">
+    <div class="col-sm-6" style="text-decoration-color: aliceblue;">
+   <font face="raleway">  <h2>Mekong Delta</h2>
+     Door de langgerekte vorm van de Mekong zijn er grote klimaatverschillen. Het zuiden van de Mekong delta is tropisch met gemiddelde temperaturen die vrij constant rond de 30°C liggen. <br> <img src=img/tempmek.png height="300px" width="400px" /><br> <br><br>is de luchtvochtigheid in april en mei zeer hoog, die dan oploop tot boven de 90%. Dit wordt gekenmerkt door felle korte buiten. Juli tot septemer is de periode waarin de meeste regen valt. De Mekong delta krijgt ’s zomers regelmatig te maken met overstromingen na hevige regenvallen in Laos en Cambodja. <br><br>
+In de noordelijke kustregio van Midden-Vietnam is het weer over het algemeen slecht. Hier valt in de maanden augustus tot januari de meeste regen. Dit gedeelte van het kustgebied heeft dan ook veel te lijden van verwoestende wervelstormen of taifoens. 
+       <br><br>De verschillen per regio zijn groot; als in de bergen de regentijd is aangebroken, is het aan de kust zonnig en droog. En als het in de winter in het noordelijke berggebied vrij koud is, is het in het zuiden lekker warm. </font>
+    </div>
+    <div class="col-sm-6" style="text-decoration-color: aliceblue; text-align:right">
+     <font face="raleway"><h2>Lagune van Venetië</h2>
+     
+Venetië heeft een mediterraan klimaat met warme zomers en vrij zachte winters. De zomers zijn warm en droog en de winters, waarin de meeste regenval plaatsvindt, zijn mild en nat. <br> <img src=img/tempven.png height="300px" width="400px" /><br><br><br>Het klimaat in Venetië is constant, maar het kan ook van dag tot dag variëren. In januari kan een dag koud en winderig zijn, maar het kan ook zonnig zijn. In het hartje van de zomer kan het ongelooflijk warm zijn en een temperatuur bereiken van ongeveer 31°C. <br>De gemiddelde maandelijkse temperatuur stijgt vanaf juni boven de 25°C. Omdat Venetië in een lagune ligt, is de luchtvochtigheid hoog. Van oktober tot februari is deze het hoogst. 
+         <br><br>Het klimaat in Venetië kent andere bekende fenomenen die bekend staan als Acqua alta (hoogwater) en Acqua bassa (laagwater) waar meer over wordt verteld onder het onderwerp overstromingen. </font>
+      </div></div>
+      <div style="text-align: center" > 
+      <img class="img-fluid text-center" src=img/vergelijking%20regen.PNG /></div>
+    </div>
+     <div id="menu5" class="tab-pane fade">
+     <div class="row">
+    <div class="col-sm-6" style="text-decoration-color: aliceblue;">
+   <font face="raleway">  <h2>Mekong Delta</h2>
+     Er liggen zo duizenden kilometers aan dijken, vaak tot vier meter hoog, kriskras door de delta om de mensen te beschermen. De aangelegde dijken en dammen zijn echter niet genoeg om het overstromingsrisico te verbeteren. Om het risico te verminderen is het van belang dat beide de stadsplanning en waterbeheer geïntegreerd worden in de hele Mekong delta. <br>
+     <img src=img/meksys.png height="300px" width="400px" /><br><br>
+Er zijn twee alternatieve strategieën voor de aanpak van het hoogwater in de Delta en mogelijke plannen van stedelijke patronen:
+    Links: Het gesloten systeem, met sluiting van de estuaria en dijken worden opgehoogd en zijn te vinden langs de hoofdrivieren en de kust.
+Rechts: Open systeem, met open estuaria en ruimte voor de rivier. Delen van het landbouwareaal komen onder water te staan in het geval van extreem hoog water en bieden als waterberging in het geval van grote overstromingen. De waterverdeling tussen de rivieren kan beter geregeld worden waardoor belangrijke gebieden beter beschermd kunnen worden.<br><br>
+Verder zijn er no-regret maatregelen genomen die op korte termijn te realiseren zijn. De maatregelen kunnen zich aanpassen op de behoeften van de bevoling, veranderingen in de toestand en het verhogen van de stad door nieuwe stadsuitbreiding. Deze no-regret maatregelen zijn gericht op het volgende:
+        <li>land ophogen door middel van stadsuitbreiding</li>
+        <li>waterberging binnen de stad en gebruikmaken van eb voor afwatering</li>
+        <li>rivierparken in steden</li>
+        <li>anti-verziltingssluizen in riviermondingen</li>
+        </font>
+    </div>
+    <div class="col-sm-6" style="text-decoration-color: aliceblue; text-align:right">
+    <font face="raleway"> <h2>Lagune van Venetië</h2>
+ De stad Venetië zoals we die nu kennen is geen natuurlijk eiland (of groep van 118 eilanden), maar een kunstmatige stad gebouwd op het water. De hele stad wordt gedragen door miljoenen houten palen, elk ongeveer 14 cm dik en tot 3 meter lang. Ook de huizen moeten op een speciale manier worden gebouwd, omdat ze op een onstabiele grond moeten blijven staan en bestand moeten zijn tegen de krachten van het water.<br><br><img src=img/vensys2.png height="220px" width="400px" /><br><br>
+Het MOSE-project is dé oplossing voor de overstromingen. Het project is een mobiele stormvloedkering om de lagune van Venetië af te kunnen sluiten van de Adriatische Zee. De barriere wordt aangelegd bij de drie ingangen van de laguna, Lida, Malamocco en Chioggia. Bij de inhammen van Lido (2 barrières), Malamocco en Chioggia komen er 4 barrières van ongeveer 200 meter breed. Elke barrière bestaat uit ca. 20 poorten, die individueel kunnen worden gemanipuleerd. De barrières moeten Venetië en de andere laguneilanden beschermen tot een zeeniveau van 300 cm. <br><br>
+De barrières zullen worden verhoogd om de lagune van de zee te scheiden wanneer er een hoog waterstand van 110 cm of meer wordt voorspeld. Voor het opstijgen worden de barrières gevuld met perslucht om uit de zee op te stijgen. Als het gevaar is geweken (meestal 4 uur), worden de barrières gevuld met water om ze weer onder de zeespiegel te laten zakken.</font>
+
+        <iframe width="400" height="300" src="https://www.youtube.com/embed/0G6S-8-1VWc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+         
+
+         </div></div></div>
+      <!-- einde vergelijking-->
+      </div>
+      
+     <!-- more 
+     <div id="menu2" class="tab-pane fade">
+      <h2>Peter Griffin, Bass player</h2>
+      <p>I mean, sometimes I enjoy the show, but other times I enjoy other things.</p>
+    </div>
+  </div>
+
+     
+     <div id="menu2" class="tab-pane fade">
+      <h2>Peter Griffin, Bass player</h2>
+      <p>I mean, sometimes I enjoy the show, but other times I enjoy other things.</p>
+    </div>
+  </div> -->
+
+      
+      <div class="col-sm-4">
+     </div>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+        
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> </label>
+              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+            </div>
+              <button type="submit" class="btn btn-block"> 
+                <span class="glyphicon glyphicon-ok"></span>
+              </button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+            <span class="glyphicon glyphicon-remove"></span>
+          </button>
+          <p><a href="#"></a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Mappen Section) -->
+<div class="jumbotron jumbotron-fluid" style="background-color: dark; opacity: 0.8;">
+ 
+  <div class="container">
+      <h2 class="text-center"><font face="quicksand">OVERSTROMINGEN</font></h2>
+      <p class="text-center"><font face="raleway">De onderstaande kaarten weergeven de belangrijkste onderstromingsgebieden binnen de lagune van Venetie en de Mekong delta. Elk regenlaarsje kent zijn eigen verhaal.</font></p>
+   <div class="row" style="text-align: center">
+    
+
+      <div class="col-md-7">
+          <div id="map"> </div></div>
+          
+              <div class="col-md-5">
+        <div id="map2"></div></div>
+    </div>
+       </div>
+
+
+
+      </div>
+  <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+   </div>
+  </div>
+    
+</div>
+
+
+ <!-- Container (About Section) -->
+<div id="contact" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6" style="padding-left: 100px;">
+        <h2><font face="quicksand">Over Urban View</font></h2>
+        <h5><font face="raleway">Wie zijn wij?</font></h5>
+        <p><font face="raleway">Urban View staat bekend op haar Mixed Reality simulaties van de echte wereld. Het bedrijf is opgericht om enkele van ’s werelds moeilijkste problemen te analyseren, onderzoeken en op te lossen. Urban view doet dit met de inzet van wetenschap, duurzaamheid, gemeenschap, onderwijs, onderzoek en toekomstige innovaties.</font> </p>
+
+<p>Sinds de oprichting in 1971 heeft Urban View een grote expertise opgebouwd in het toepassen van onderzoek op het gebied van diversiteit en complexiteit in de milieuproblematiek. Enkele onderzoeken die worden uitgevoerd worden publiekelijk gedeeld op hun research website. 
+Door de grote opkomst van klimaatverandering is Urban View momenteel bezig met het oprichten van een Delta website. De stedelijke delta’s kampen tegenwoordig echter met gelijksoortige uitdagingen. Zeker in de tijd van dreigende overstromingen en te dicht bevolkte gebieden. 
+</p>
+    </div>
+    <div class="col-sm-6">
+	<div class="contact-form" style="text-align: center">
+        <p><font face="quicksand"><br><b>Neem contact op<</font></p><form>
+			<input type="text" name="name" placeholder="Naam" />
+			<input type="tel" name="phone" placeholder="Tel. nr."/>
+			<input style="width: 350px" type="email" name="e-mail" placeholder="E-mail" />
+			<textarea style="width: 350px" name="text" id="" rows="8" placeholder="Type hier uw bericht"></textarea> <p></p>
+        <button class="btn-send"><font face="raleway">Verstuur</font></button>
+		</form>
+	</div>
+</div>
+    </div>
+  </div>
+</div>
+
+  <br>
+  
+  <!-- Container (BLOG) -->
+<div id="blog" style="background-color: aliceblue">
+<div class="container">
+    
+   <!-- begin wwww.htmlcommentbox.com -->
+ <div id="HCB_comment_box">   
+     <a href="http://www.htmlcommentbox.com">Comment Box</a> is loading comments...</div><font size="4"><b><font face="quicksand">Deel jouw kennis, mening, ervaring, ideeën over waterveiligheid en-/of de Mekong delta/lagune van Venetië!</font></b></font>  
+ <link rel="stylesheet" type="text/css" href="//www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
+ <script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="//www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24QelOT7VZdueWm4kJNi7%2Fc0"+"&opts=16862&num=10&ts=1546805683386");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
+
+ <!-- end www.htmlcommentbox.com -->
+  
+   <!-- oude blog 
+  <p class="text-center">Plaatst jouw kennis en mening. Samen werken wij naar een betere toekomst!</p>
+  <hr>
+  <div class="media">
+    <div class="media-left">
+      <img src="img/avatar1.png" class="media-object" style="width:45px">
+    </div>
+    <div class="media-body">
+      <p class="media-heading">John Doe <small><i>Posted on February 19, 2016</i></small></p>
+      <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p>
+      
+      
+      <div class="media">
+        <div class="media-left">
+          <img src="img/avatar2.png" class="media-object" style="width:45px">
+        </div>
+        <div class="media-body">
+          <p class="media-heading">John Doe <small><i>Posted on February 20, 2016</i></small></p>
+          <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p>
+
+          <!-- Nested media object 
+          <div class="media">
+            <div class="media-left">
+              <img src="img/avatar4.jpg" class="media-object" style="width:45px">
+            </div>
+            <div class="media-body">
+              <p class="media-heading">John Doe <small><i>Posted on February 21, 2016</i></small></p>
+              <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem </p>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- Nested media object 
+        <div class="media">
+          <div class="media-left">
+            <img src="img/avatar3.png" class="media-object" style="width:45px">
+          </div>
+          <div class="media-body">
+            <p class="media-heading">Jane Doe <small><i>Posted on February 20, 2016</i></small></p>
+            <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p> 
+          </div>
+        </div>-->
+        
+        
+      </div>
+    </div>
+    
+    
+
+  </div>
+</div>
+
+
+
+<!-- Footer -->
+<footer class="text-center">
+    <p><font face="raleway">Gemaakt door Jaymi Sowirono</font> <a href="https://www.w3schools.com" data-toggle="tooltip" title="Visit w3schools"><font face="raleway">© Copyright 2018</font></a></p> 
+    <p><font face="quicksand">URBEN VIEW </font><img src="img/logo.png" height="30px" width="30px" /> </p>
+</footer>
+
+<script>
+$(document).ready(function(){
+  // Initialize Tooltip
+  $('[data-toggle="tooltip"]').tooltip(); 
+  
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+})
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>
